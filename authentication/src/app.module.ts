@@ -16,10 +16,10 @@ import * as Joi from 'joi';
       }),
 
       //* unknown environment variables will throw an error
-      validationOptions: {
-        allowUnknown: false,
-        abortEarly: true,
-      },
+      // validationOptions: {
+      //   allowUnknown: false,
+      //   abortEarly: true,
+      // },
 
       //* set configuration use in other modules
       isGlobal: true,
