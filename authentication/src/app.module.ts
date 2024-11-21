@@ -5,7 +5,7 @@ import { ConfigModule } from '@nestjs/config';
 import * as Joi from 'joi';
 
 //* uncomment if you want to load configuration from file [configuration.ts]
-// import configuration from '../config/configuration';
+// import configuration from './config/configuration';
 
 @Module({
   imports: [
