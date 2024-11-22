@@ -4,4 +4,5 @@ export default () => ({
   servicesUrl: {
     servicesName: 'http://localhost/v1/api/services-name',
   },
+  mongodbUrl: process.env.MONGODBURL,
 });
