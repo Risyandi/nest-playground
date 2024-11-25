@@ -1,5 +1,5 @@
 import { Mongoose } from 'mongoose';
-import { AuthSchema } from './entities/auth.entity';
+import { AuthSchema } from '../../app/modules/auth/entities/auth.entity';
 
 export const AuthProviders = [
   {
