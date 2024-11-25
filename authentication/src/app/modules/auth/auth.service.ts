@@ -1,7 +1,6 @@
 import { Inject, Injectable } from '@nestjs/common';
 import { Model } from 'mongoose';
-import { CreateAuthDto } from './dto/create-auth.dto';
-import { UpdateAuthDto } from './dto/update-auth.dto';
+import { CreateAuthDto, UpdateAuthDto } from './dto/auth.dto';
 import { Authentication } from '../../../core/interfaces/auth.interfaces';
 
 @Injectable()
@@ -15,7 +14,7 @@ export class AuthService {
   create(createAuthDto: CreateAuthDto) {
     const createdAuthentication = this.authModel.create(createAuthDto);
     createdAuthentication.then((data) =>
-      console.log(data, 'createdAuthentication'),
+      console.log('risyandi ~ AuthService ~ create ~ data:', data),
     );
 
     // return createdAuthentication;
@@ -26,7 +25,7 @@ export class AuthService {
   findAll() {
     const dataFindAllAuthentication = this.authModel.find().exec();
     dataFindAllAuthentication.then((data) =>
-      console.log(data, 'findAllAuthentication'),
+      console.log('risyandi ~ AuthService ~ findAll ~ data:', data),
     );
 
     // return findAllAuthentication
@@ -37,7 +36,7 @@ export class AuthService {
   findOne(id: number) {
     const dataFindOneAuthentication = this.authModel.findById(id).exec();
     dataFindOneAuthentication.then((data) =>
-      console.log(data, 'findOneAuthentication'),
+      console.log('risyandi ~ AuthService ~ findOne ~ data:', data),
     );
 
     // return findOneAuthentication
@@ -50,7 +49,7 @@ export class AuthService {
       .findByIdAndUpdate(id, updateAuthDto)
       .exec();
     dataUpdateAuthentication.then((data) =>
-      console.log(data, 'updateAuthentication'),
+      console.log('risyandi ~ AuthService ~ update ~ data:', data),
     );
 
     // return updateAuthentication
@@ -61,7 +60,7 @@ export class AuthService {
   remove(id: number) {
     const dataRemoveAuthentication = this.authModel.findByIdAndDelete(id);
     dataRemoveAuthentication.then((data) =>
-      console.log(data, 'removeAuthentication'),
+      console.log('risyandi ~ AuthService ~ remove ~ data:', data),
     );
 
     // return removeAuthentication

@@ -6,10 +6,11 @@ import {
   Patch,
   Param,
   Delete,
+  Req,
 } from '@nestjs/common';
+import { Request } from 'express'; // ex: get value from request using method express, the method similar "Body" in @nestjs/common
 import { AuthService } from './auth.service';
-import { CreateAuthDto } from './dto/create-auth.dto';
-import { UpdateAuthDto } from './dto/update-auth.dto';
+import { CreateAuthDto, UpdateAuthDto } from './dto/auth.dto';
 
 @Controller({ path: 'auth', version: '2' }) // specific version
 export class AuthController {
@@ -21,7 +22,15 @@ export class AuthController {
   }
 
   @Get()
-  findAll() {
+  findAll(@Req() request: Request) {
+    console.log(
+      'risyandi ~ AuthController ~ findAll ~ Request.query:',
+      request.query,
+    );
+    console.log(
+      'risyandi ~ AuthController ~ findAll ~ Request.body:',
+      request.body,
+    );
     return this.authService.findAll();
   }
 
