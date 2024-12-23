@@ -9,16 +9,16 @@ import {
   Req,
 } from '@nestjs/common';
 import { Request } from 'express'; // ex: get value from request using method express, the method similar "Body" in @nestjs/common
-import { AuthService } from './auth.service';
-import { CreateAuthDto, UpdateAuthDto } from './dto/auth.dto';
+import { UsersService } from './users.service';
+import { CreateUsersDto, UpdateUsersDto } from './dto/users.dto';
 
-@Controller({ path: 'auth', version: '2' }) // specific version
-export class AuthController {
-  constructor(private readonly authService: AuthService) {}
+@Controller({ path: 'users', version: '2' }) // specific version
+export class UsersController {
+  constructor(private readonly usersService: UsersService) {}
 
   @Post()
-  create(@Body() createAuthDto: CreateAuthDto) {
-    return this.authService.create(createAuthDto);
+  create(@Body() createUsersDto: CreateUsersDto) {
+    return this.usersService.create(createUsersDto);
   }
 
   @Get()
@@ -31,21 +31,21 @@ export class AuthController {
       'risyandi ~ AuthController ~ findAll ~ Request.body:',
       request.body,
     );
-    return this.authService.findAll();
+    return this.usersService.findAll();
   }
 
   @Get(':id')
   findOne(@Param('id') id: number) {
-    return this.authService.findOne(id);
+    return this.usersService.findOne(id);
   }
 
   @Patch(':id')
-  update(@Param('id') id: number, @Body() updateAuthDto: UpdateAuthDto) {
-    return this.authService.update(id, updateAuthDto);
+  update(@Param('id') id: number, @Body() updateUsersDto: UpdateUsersDto) {
+    return this.usersService.update(id, updateUsersDto);
   }
 
   @Delete(':id')
   remove(@Param('id') id: number) {
-    return this.authService.remove(id).exec();
+    return this.usersService.remove(id).exec();
   }
 }

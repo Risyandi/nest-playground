@@ -1,18 +1,18 @@
 import { Inject, Injectable } from '@nestjs/common';
 import { Model } from 'mongoose';
-import { CreateAuthDto, UpdateAuthDto } from './dto/auth.dto';
-import { Authentication } from '../../../core/interfaces/auth.interfaces';
+import { CreateUsersDto, UpdateUsersDto } from './dto/users.dto';
+import { Users } from '../../../core/interfaces/users.interfaces';
 
 @Injectable()
-export class AuthService {
+export class UsersService {
   // constructor injection model
   constructor(
-    @Inject('AUTH_MODEL') private readonly authModel: Model<Authentication>,
+    @Inject('USERS_MODEL') private readonly usersModel: Model<Users>,
   ) {}
 
   // create data
-  create(createAuthDto: CreateAuthDto) {
-    const createdAuthentication = this.authModel.create(createAuthDto);
+  create(createUsersDto: CreateUsersDto) {
+    const createdAuthentication = this.usersModel.create(createUsersDto);
     createdAuthentication.then((data) =>
       console.log('risyandi ~ AuthService ~ create ~ data:', data),
     );
@@ -23,7 +23,7 @@ export class AuthService {
 
   // find all data
   findAll() {
-    const dataFindAllAuthentication = this.authModel.find().exec();
+    const dataFindAllAuthentication = this.usersModel.find().exec();
     dataFindAllAuthentication.then((data) =>
       console.log('risyandi ~ AuthService ~ findAll ~ data:', data),
     );
@@ -34,7 +34,7 @@ export class AuthService {
 
   // find data by id
   findOne(id: number) {
-    const dataFindOneAuthentication = this.authModel.findById(id).exec();
+    const dataFindOneAuthentication = this.usersModel.findById(id).exec();
     dataFindOneAuthentication.then((data) =>
       console.log('risyandi ~ AuthService ~ findOne ~ data:', data),
     );
@@ -44,9 +44,9 @@ export class AuthService {
   }
 
   // updated data by id
-  update(id: number, updateAuthDto: UpdateAuthDto) {
-    const dataUpdateAuthentication = this.authModel
-      .findByIdAndUpdate(id, updateAuthDto)
+  update(id: number, updateUsersDto: UpdateUsersDto) {
+    const dataUpdateAuthentication = this.usersModel
+      .findByIdAndUpdate(id, updateUsersDto)
       .exec();
     dataUpdateAuthentication.then((data) =>
       console.log('risyandi ~ AuthService ~ update ~ data:', data),
@@ -58,7 +58,7 @@ export class AuthService {
 
   // remove data by id
   remove(id: number) {
-    const dataRemoveAuthentication = this.authModel.findByIdAndDelete(id);
+    const dataRemoveAuthentication = this.usersModel.findByIdAndDelete(id);
     dataRemoveAuthentication.then((data) =>
       console.log('risyandi ~ AuthService ~ remove ~ data:', data),
     );
