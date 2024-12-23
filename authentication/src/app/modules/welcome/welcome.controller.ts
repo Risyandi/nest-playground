@@ -17,4 +17,11 @@ export class WelcomeController {
   getHelloV2(): string {
     return this.welcomeService.getHello('#2');
   }
+
+  // get hello version 3
+  @Version('3')
+  @Get('hello')
+  getHelloV3(): string {
+    return this.welcomeService.getHello('#3');
+  }
 }
