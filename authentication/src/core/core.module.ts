@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { WelcomeModule } from '../app/modules/welcome/welcome.module';
-import { AuthModule } from '../app/modules/auth/auth.module';
+import { UsersModule } from '../app/modules/users/users.module';
 import Joi from 'joi';
 
 //* uncomment if you want to load configuration from file [configuration.ts]
@@ -34,7 +34,7 @@ import configuration from '../config/configuration';
       //  allowing you to load multiple configuration file ex: [databaseConfig, authConfig]
       load: [configuration],
     }),
-    AuthModule,
+    UsersModule,
     WelcomeModule,
   ],
 })
